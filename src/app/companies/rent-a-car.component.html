@@ -1,0 +1,60 @@
+
+<table>
+    <tr>
+        <td> 
+            <button class="btn btn-success" (click)="loadRentACars()" > SHOW </button>    
+        </td>
+    </tr>
+</table>
+
+<br/>
+
+
+<div [hidden]= "rentACars.length === 0" >
+    <table class="table table-hover">           
+        <tbody>
+            <tr *ngFor="let rc of rentACars" (click)="onSelect(rc)" (click)="loadCars()" >
+                    <td>{{ rc.name }}</td>
+            </tr> 
+        </tbody>
+    </table>       
+</div>
+
+<br/>
+
+
+<div [hidden]="selectedRentACar.name ==='' " *ngIf="selectedRentACar">
+
+   <table class="table table-hover">   
+        <thead>
+            {{ selectedRentACar.name | uppercase}} details:
+        </thead>        
+        <tbody>
+            <tr>
+                <td> rate: </td>
+                <td>{{selectedRentACar.rate}}</td>
+            </tr> 
+            <tr> 
+                <td> name: </td>
+                <td> <input [(ngModel)]="selectedRentACar.name" placeholder="name"/> </td>
+            </tr>
+            <tr>
+                <td> address: </td>
+                <td> <input [(ngModel)]="selectedRentACar.address"  placeholder="address"/> </td>
+            </tr>
+            <tr>
+                <td> description: </td>
+                <td>  <input [(ngModel)]="selectedRentACar.description" placeholder="description"/> </td>
+            </tr>
+            <tr>
+                <td> cars: </td>
+                    <td> 
+                        <tr *ngFor="let c of selectedRentACar.cars" > 
+                           <td>  {{ c.name }}  </td>
+                        </tr>
+                    </td>
+            </tr>
+
+        </tbody>
+    </table>     
+</div>
