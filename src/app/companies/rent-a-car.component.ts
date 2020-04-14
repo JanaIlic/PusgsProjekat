@@ -5,8 +5,8 @@ import { RentACarService } from "src/app/companies/rent-a-car.service";
 
 @Component({
     selector: 'rent-a-car',
-    templateUrl: '../companies/rent-a-car.component.html'
-
+    templateUrl: '../companies/rent-a-car.component.html',
+    styleUrls: ['./rent-a-car.component.css']
 })
 
 export class RentACarComponent{

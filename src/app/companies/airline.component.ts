@@ -5,7 +5,8 @@ import { Flight } from './flight';
 
 @Component({
     selector: 'airlines',
-    templateUrl: '../companies/airlines.component.html'
+    templateUrl: '../companies/airlines.component.html',
+    styleUrls: ['./airline.component.css']
 })
 
 export class AirlineComponent {

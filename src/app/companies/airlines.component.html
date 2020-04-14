@@ -1,5 +1,3 @@
-
-
 <table>
     <tr>
         <td> 
@@ -11,51 +9,40 @@
 <br/>
 
 
-
 <div [hidden]="airlines.length === 0">
-        <table class="table table-hover">           
-            <tbody>
-                <tr *ngFor="let ac of airlines" (click)="onSelect(ac)" (click)="loadFlights()" >
-                        <td>{{ ac.name }}</td>
-                </tr> 
-            </tbody>
-        </table>       
-</div>
-
-<br/>
-
-
-<div [hidden]="selectedAirline.name ==='' " *ngIf="selectedAirline"  >
-    <table class="table table-hover">   
+    <table class="table table-hover">
         <thead>
-            {{selectedAirline.name | uppercase}} details:
-        </thead>        
+            <th scope="col">name</th>
+        </thead>
         <tbody>
-            <tr>
-                <td> rate: </td>
-                <td>{{selectedAirline.rate}}</td>
-            </tr> 
-            <tr> 
-                <td> name: </td>
-                <td> <input [(ngModel)]="selectedAirline.name" placeholder="name"/> </td>
-            </tr>
-            <tr>
-                <td> address: </td>
-                <td> <input [(ngModel)]="selectedAirline.address"  placeholder="address"/> </td>
-            </tr>
-            <tr>
-                <td> description: </td>
-                <td>  <input [(ngModel)]="selectedAirline.description" placeholder="description"/> </td>
-            </tr>
-            <tr>
-                <td> flights: </td>
-                    <td> 
-                        <tr *ngFor="let f of selectedAirline.flights" > 
-                           <td>  {{ f.from  }} - {{ f.to }}  - {{ f.price }} e - {{ f.time }} </td>
-                        </tr>
+            <tr *ngFor="let ac of airlines" 
+            [class.selected]="ac === selectedAirline"
+            (click)="onSelect(ac)">
+                    <td>
+                        <span class="badge">{{ ac.rate}}</span> {{ac.name}}
                     </td>
             </tr>
-        </tbody>
-    </table>     
 
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="selectedAirline">
+    <h2>{{selectedAirline.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{selectedAirline.rate}}</div>
+    <div>
+        <label>name:
+            <input [(ngModel)] = "selectedAirline.name" placeholder="name"/>
+        </label>
+    </div>
+    <div>
+        <label>address:
+            <input [(ngModel)] = "selectedAirline.address" placeholder="address"/>
+        </label>
+    </div>
+    <div>
+        <label>description:
+            <input [(ngModel)] = "selectedAirline.description" placeholder="description"/>
+        </label>
+    </div>
 </div>
