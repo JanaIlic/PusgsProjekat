@@ -16,13 +16,18 @@ export class AirlineComponent {
     flights : Array<Flight>;
 
     num: number;
-    
+
+    toSearch: string;
+    afterSearch: string;
+    airline: Airline;
 
     constructor(private airlineService: AirlineService){
         this.airlines = new Array<Airline>();
         this.selectedAirline = new Airline('',0,'','');
       
         this.flights = new Array<Flight>();
+       
+        this.toSearch = '';
     }
 
     loadAirlines() : void{
@@ -37,5 +42,17 @@ export class AirlineComponent {
     loadFlights() : void{
         this.selectedAirline.flights = this.airlineService.loadFlights().slice(this.num, this.num+5);
     }
+
+    doSearch() : void{  
+     this.afterSearch = "Ne postoji takva aviokompanija.";  
+
+        for(let i = 0; i< this.airlineService.loadAirlines().length; i++){           
+         this.airline = this.airlineService.loadAirlines()[i] ;
+             
+            if( this.airline.name === this.toSearch){
+                 this.afterSearch  = "Aviokompanija koju ste tražili: " + this.airline.name;
+            }
+        }
+     }
 
 }

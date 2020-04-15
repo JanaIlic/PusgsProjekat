@@ -1,4 +1,16 @@
-<table>
+<table> 
+    <tr> 
+        <td>
+            <input type="text" [(ngModel)]="toSearch" > <button class="btn btn-success" (click)="doSearch()" > search </button>
+       </td>
+    </tr>
+    <tr> 
+        <td>
+            <p [hidden]="toSearch===''" > 
+                {{ afterSearch }}
+            </p>
+       </td> 
+    </tr>
     <tr>
         <td> 
             <button class="btn btn-success" (click)="loadRentACars()" > SHOW </button>    
@@ -61,3 +73,4 @@
         </tbody>
     </table>     
 </div>
+
