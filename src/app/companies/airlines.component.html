@@ -24,7 +24,8 @@
 
  
 
-<div [hidden]="airlines.length === 0">
+<div class="split left" [hidden]="airlines.length === 0">
+    <div class="centered">
     <table class="table table-hover">           
         <tbody>
             <tr *ngFor="let ac of airlines" (click)="onSelect(ac)" (click)="loadFlights()" >
@@ -33,10 +34,11 @@
         </tbody>
     </table>       
 </div>
-
+</div>
 <br/>
 
-<div [hidden]="selectedAirline.name ==='' " *ngIf="selectedAirline"  >
+<div class="split right" [hidden]="selectedAirline.name ==='' " *ngIf="selectedAirline"  >
+    <div class="centered">
     <table class="table table-hover">   
         <thead>
             {{selectedAirline.name | uppercase}} details:
@@ -68,7 +70,7 @@
             </tr>
         </tbody>
     </table>     
-
+</div>
 </div>
 
 

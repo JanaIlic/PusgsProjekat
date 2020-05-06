@@ -21,7 +21,8 @@
 <br/>
 
 
-<div [hidden]= "rentACars.length === 0" >
+<div class="split left" [hidden]= "rentACars.length === 0" >
+    <div class="centered">
     <table class="table table-hover">           
         <tbody>
             <tr
@@ -32,14 +33,15 @@
                     </td>
             </tr> 
         </tbody>
-    </table>       
+    </table>    
+</div>   
 </div>
 
 <br/>
 
 
-<div [hidden]="selectedRentACar.name ==='' " *ngIf="selectedRentACar">
-
+<div class="split right" [hidden]="selectedRentACar.name ==='' " *ngIf="selectedRentACar">
+    <div class="centered">
    <table class="table table-hover">   
         <thead>
             {{ selectedRentACar.name | uppercase}} details:
@@ -71,6 +73,7 @@
             </tr>
 
         </tbody>
-    </table>     
+    </table>    
+</div> 
 </div>
 
